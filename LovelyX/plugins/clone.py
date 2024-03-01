@@ -1,10 +1,10 @@
-from Barath import barath, MODULE
+from LovelyX import lovely, MODULE
 from pyrogram import filters
-from Barath.barath_db.clone_db import store_profile, get_profile
+from LovelyX.database.clone_db import store_profile, get_profile
 
 import config
 
-@barath.on_message(filters.command("cpfp",config.HANDLER) & filters.me)
+@LovelyX.on_message(filters.command("cpfp",config.HANDLER) & filters.me)
 async def clone(_, message):
     if not message.reply_to_message:
          try:
@@ -22,7 +22,7 @@ async def clone(_, message):
           
     await message.edit('Collecting Information from Client')
 
-    user = await barath.get_chat(clone_id)
+    user = await lovely.get_chat(clone_id)
     bio = user.bio if user.bio else None
     first_name = user.first_name
     photo_id = user.photo.big_file_id if user.photo else None
@@ -38,11 +38,11 @@ async def clone(_, message):
     
     
     
-@barath.on_message(filters.command("savepfp", config.HANDLER) & filters.me)
+@LovelyX.on_message(filters.command("savepfp", config.HANDLER) & filters.me)
 async def save_pfp(_, message):
       user_id = message.from_user.id
       await message.edit('Saving your information into DB')      
-      user = await barath.get_chat(user_id)
+      user = await lovely.get_chat(user_id)
       bio = user.bio if user.bio else None
       first_name = user.first_name 
       async for file in barath.get_chat_photos(user_id, limit=1):
@@ -50,7 +50,7 @@ async def save_pfp(_, message):
       await store_profile(user_id=user_id, profile=photo_id, first_name=first_name, bio=bio)
       return await message.edit("Successfully Saved!")
           
-@barath.on_message(filters.command("rnpfp", config.HANDLER) & filters.me)
+@LovelyX.on_message(filters.command("rnpfp", config.HANDLER) & filters.me)
 async def return_profile(_, message):
      user_id = message.from_user.id
      if (await get_profile(user_id)) == False:
@@ -60,12 +60,12 @@ async def return_profile(_, message):
      first_name = user.get("first_name")
      photo_id = user.get("profile")
      try:
-        profile = await barath.download_media(photo_id)
-        await barath.set_profile_photo(photo=profile)
+        profile = await lovely.download_media(photo_id)
+        await lovely.set_profile_photo(photo=profile)
      except:
          pass
 
-     await barath.update_profile(first_name=first_name, bio=bio)
+     await lovely.update_profile(first_name=first_name, bio=bio)
      return await message.edit("Successfully Reseted Info!")
 
 
