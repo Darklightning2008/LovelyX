@@ -2,12 +2,12 @@ import pyrogram
 import strings
 import config
 
-from Barath import bot , barath
-from Barath.helpers.help_func import get_datetime 
+from LovelyX import bot , lovely
+from LovelyX.helpers.help_func import get_datetime 
 
 async def run_clients():
       await bot.start()
-      await barath.start()
+      await lovely.start()
       await pyrogram.idle()
       zone = await get_datetime()
       await bot.send_message(
@@ -19,4 +19,4 @@ async def run_clients():
 
 
 if __name__ == "__main__":
-    barath.loop.run_until_complete(run_clients())
+    lovely.loop.run_until_complete(run_clients())
