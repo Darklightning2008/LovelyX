@@ -17,7 +17,7 @@ AFK_RESTIRECT = {}
 DELAY_TIME = 20
 
 
-@barath.on_message(filters.command("afk", HANDLER) & filters.me)
+@lovely.on_message(filters.command("afk", HANDLER) & filters.me)
 async def afk(barath, message):
     afk_time = int(time.time())
     arg = get_arg(message)
@@ -25,14 +25,14 @@ async def afk(barath, message):
         reason = None
     else:
         reason = arg
-    await Zect.set_afk(True, afk_time, reason)
+    await Sun.set_afk(True, afk_time, reason)
     await message.edit("**I'm goin' AFK**")
 
 
-@barath.on_message(filters.mentioned & ~filters.bot & filters.create(user_afk), group=11)
+@lovely.on_message(filters.mentioned & ~filters.bot & filters.create(user_afk), group=11)
 async def afk_mentioned(_, message):
     global MENTIONED
-    afk_time, reason = await Zect.afk_stuff()
+    afk_time, reason = await Sun.afk_stuff()
     afk_since = get_readable_time(time.time() - afk_time)
     if "-" in str(message.chat.id):
         cid = str(message.chat.id)[4:]
@@ -44,10 +44,10 @@ async def afk_mentioned(_, message):
     AFK_RESTIRECT[cid] = int(time.time()) + DELAY_TIME
     if reason:
        await message.reply(
-        f"**I'm AFK right now (since {afk_since})\nReason:** __{reason}__"
+        f"**I am busy(since {afk_since})\nReason:** __{reason}__"
         )
     else:
-        await message.reply(f"**I'm AFK right now (since {afk_since})**")
+        await message.reply(f"**I am busy (since {afk_since})**")
 
         _, message_type = get_message_type(message)
         if message_type == Types.TEXT:
@@ -67,12 +67,12 @@ async def afk_mentioned(_, message):
         )
 
 
-@barath.on_message(filters.create(user_afk) & filters.outgoing)
+@lovely.on_message(filters.create(user_afk) & filters.outgoing)
 async def auto_unafk(_, message):
-    await Zect.set_unafk()
-    unafk_message = await barath.send_message(message.chat.id, "**I'm no longer AFK**")
+    await Sun.set_unafk()
+    unafk_message = await barath.send_message(message.chat.id, "**I am back**")
     global MENTIONED
-    text = "**Total {} mentioned you**\n".format(len(MENTIONED))
+    text = "**These much guys {} mentioned you**\n".format(len(MENTIONED))
     for x in MENTIONED:
         msg_text = x["text"]
         if len(msg_text) >= 11:
@@ -84,7 +84,7 @@ async def auto_unafk(_, message):
             x["chat"],
             msg_text,
         )
-        await barath.send_message(GROUP_ID, text)
+        await lovely.send_message(GROUP_ID, text)
         MENTIONED = []
     await asyncio.sleep(2)
     await unafk_message.delete()
