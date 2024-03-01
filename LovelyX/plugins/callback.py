@@ -1,15 +1,17 @@
 import strings
 
-from Barath import bot, MODULE, INFO as GET_INFO
+from LovelyX import bot, MODULE
+
+from LovelyX import INFO as GET_INFO
 from pyrogram import filters, enums 
-from Barath import barath 
+from LovelyX import lovely 
 from pyrogram.types import ( 
 InlineKeyboardMarkup, InlineKeyboardButton )
 
 
 @bot.on_callback_query(filters.regex("help_back"))
 async def help_back(_, query):
-   user_id = (await GET_INFO.barath()).id
+   user_id = (await GET_INFO.lovely()).id
    if not query.from_user.id == int(user_id):
        return await query.answer("😤 You aren't my master")
    buttons = [[InlineKeyboardButton(x['module'], callback_data=f"help:{x['module']}")] for x in MODULE]
@@ -20,7 +22,7 @@ async def help_back(_, query):
 
 @bot.on_callback_query(filters.regex('^help'))
 async def help_commnds(_, query):
-   user_id = (await GET_INFO.barath()).id
+   user_id = (await GET_INFO.lovely()).id
    if not query.from_user.id == int(user_id):
        return await query.answer("😤 You aren't my master")
    CB_NAME = query.data.split(':')[1].casefold()
