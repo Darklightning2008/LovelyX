@@ -1,4 +1,4 @@
-import sys
+limport sys
 import io
 
 from subprocess import getoutput as run
@@ -8,8 +8,8 @@ import config, strings
 import asyncio
 
 from pyrogram import filters, enums
-from Barath import bot, INFO , barath
-from Barath.helpers.help_func import emoji_convert
+from LovelyX import bot, INFO , lovely
+from LovelyX.helpers.help_func import emoji_convert
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import MessageTooLong
 
