@@ -14,7 +14,7 @@ import time
 
 MENTIONED = []
 AFK_RESTIRECT = {}
-DELAY_TIME = 20
+TIME_GAP= 20
 
 
 @lovely.on_message(filters.command("afk", HANDLER) & filters.me)
@@ -41,7 +41,7 @@ async def afk_mentioned(_, message):
 
     if cid in list(AFK_RESTIRECT) and int(AFK_RESTIRECT[cid]) >= int(time.time()):
         return
-    AFK_RESTIRECT[cid] = int(time.time()) + DELAY_TIME
+    AFK_RESTIRECT[cid] = int(time.time()) + TIME_GAP
     if reason:
        await message.reply(
         f"**I am busy(since {afk_since})\nReason:** __{reason}__"
