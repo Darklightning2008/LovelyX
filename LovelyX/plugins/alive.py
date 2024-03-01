@@ -10,7 +10,7 @@ from LovelyX import lovely, MODULE
 async def alive():
     start_time = time.time()
     katsuki = "3.01"
-    user = await barath.get_me()
+    user = await lovely.get_me()
     name = user.first_name
     username = user.username
     user_profile_link = f"https://t.me/{username}" if username else ""
@@ -40,7 +40,7 @@ async def alive():
 
     return ALIVE_TEXT, photo_url
 
-@barath.on_message(filters.command("alive", prefixes=HANDLER) & filters.me)
+@lovely.on_message(filters.command("alive", prefixes=HANDLER) & filters.me)
 async def chk_alive(_, message):
     msg = await message.reply_text("Checking...")
     try:
@@ -59,7 +59,7 @@ async def chk_alive(_, message):
     except:
         pass
 
-@barath.on_message(filters.command("ping", prefixes=HANDLER) & filters.me)
+@lovely.on_message(filters.command("ping", prefixes=HANDLER) & filters.me)
 async def ping(_, message):
     start_time = time.time()
     msg =  await message.reply_text("Ping...")
