@@ -48,7 +48,7 @@ API_ID = os.getenv("API_ID")
 API_HASH = os.getenv("API_HASH")
 SESSION = os.getenv("SESSION")
 TOKEN = os.getenv("TOKEN")
-DB_NAME = os.getenv("DB_NAME","PyroX-UB")
+DB_NAME = os.getenv("DB_NAME","Lovely_X")
 
 cli = motor.motor_asyncio.AsyncIOMotorClient(DB_URL)
 db=cli[DB_NAME]
@@ -56,17 +56,14 @@ db=cli[DB_NAME]
 DB = MongoClient(DB_URL)
 DATABASE = DB[DB_NAME]
 
-# PYROGRAM USER CLIENT 
-barath = Client(name="Barath", session_string=SESSION, api_id=API_ID, api_hash=API_HASH, plugins=dict(root="Barath"))
-
-#PYROGRAM BOT CLIENT
-bot = Client(name="BarathBot", bot_token=TOKEN, api_id=API_ID, api_hash=API_HASH, plugins=dict(root="Barath"))
+lovely = Client(name="Lovely", session_string=SESSION, api_id=API_ID, api_hash=API_HASH, plugins=dict(root="Lovely"))
+bot = Client(name="Lovely_bot", bot_token=TOKEN, api_id=API_ID, api_hash=API_HASH, plugins=dict(root="Lovely"))
 
 
 
 class INFO:
-   def barath():
-      info = barath.get_me()
+   def lovely():
+      info = lovely.get_me()
       return info   
      
    def bot():
