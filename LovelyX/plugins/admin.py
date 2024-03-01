@@ -109,7 +109,7 @@ async def ban_member(_, message):
     return await message.edit(f"=> {name} Has Been Banned!")
 
 
-@barath.on_message(filters.command("unban", prefixes=config.HANDLER) & filters.me)
+@lovely.on_message(filters.command("unban", prefixes=config.HANDLER) & filters.me)
 async def unban_member(_, message):
     if message.reply_to_message:
          user_id = message.reply_to_message.from_user.id  
@@ -126,7 +126,7 @@ async def unban_member(_, message):
     return await message.edit(f"=> {name} Has Been UnBanned!")
 
 
-@barath.on_message(filters.command("purge", prefixes=config.HANDLER) & filters.me)
+@lovely.on_message(filters.command("purge", prefixes=config.HANDLER) & filters.me)
 async def purge(_, message):
     chat_id = message.chat.id
     if not message.reply_to_message:
