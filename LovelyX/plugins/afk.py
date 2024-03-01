@@ -1,14 +1,14 @@
 from pyrogram import filters
 import asyncio
 from pyrogram import client
-from Barath import barath
-from Barath.helpers.help_func import get_arg
-import Barath.barath_db.afk_db as Zect
-from Barath.helpers.help_func import user_afk
-from Barath import get_readable_time
-from Barath.helpers.utils import get_message_type, Types
+from LovelyX import lovely
+from LovelyX.helpers.help_func import get_arg
+import LovelyX.database.afk_db as Sun
+from LovelyX.helpers.help_func import user_afk
+from LovelyX import get_readable_time
+from LovelyX.helpers.utils import get_message_type, Types
 from config import HANDLER, OWNER_ID, GROUP_ID
-from Barath.helpers.help_func import get_datetime 
+from LovelyX.helpers.help_func import get_datetime 
 import time
 
 
