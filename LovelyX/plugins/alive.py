@@ -2,10 +2,10 @@ import time
 import random 
 import asyncio
 import config
-from config import HANDLER, OWNER_ID, BARATH,SOURCE
+from config import HANDLER, OWNER_ID, LOVELY,SOURCE
 from pyrogram import filters, __version__ as pyrover, enums
-from Barath import barath, get_readable_time, StartTime
-from Barath import bot, MODULE
+from LovelyX import lovely, get_readable_time, StartTime
+from LovelyX import lovely, MODULE
 
 async def alive():
     start_time = time.time()
