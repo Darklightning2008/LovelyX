@@ -1,11 +1,11 @@
 from pyrogram import filters 
-from Barath import barath, MODULE
+from LovelyX import lovely, MODULE
 from requests import get
 
 import os
 import config
 
-@barath.on_message(filters.me & filters.command("git",prefixes=config.HANDLER))
+@lovely.on_message(filters.me & filters.command("git",prefixes=config.HANDLER))
 async def git(_, message):
     if len(message.command) < 2:
         return await message.reply_text("where you input the username?\n")
