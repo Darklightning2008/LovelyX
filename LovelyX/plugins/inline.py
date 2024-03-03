@@ -1,11 +1,11 @@
 import config 
 import requests
 
-from Barath import barath 
-from Barath import MODULE, bot, INFO as GET_INFO
-from Barath.helpers.help_func import spacebin
+from LovelyX import lovely 
+from LovelyX import MODULE, bot, INFO as GET_INFO
+from LovelyX.helpers.help_func import spacebin
 from pyrogram import filters
-from Barath.plugins.alive import alive
+from LovelyX.plugins.alive import alive
 from pyrogram.types import (
     InlineQueryResultArticle,
     InputTextMessageContent,
