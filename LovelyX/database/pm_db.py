@@ -1,4 +1,4 @@
-from Barath import db
+from LovelyX import db
 import asyncio
 
 collection = db["pmpermit"]
