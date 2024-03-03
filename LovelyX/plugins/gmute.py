@@ -1,12 +1,12 @@
 
-from Barath import barath as app
+from LovelyX import lovely as app
 from config import HANDLER
 
 from pyrogram import filters, errors
 
-from Barath.barath_db.gmutedb import get_gmuted_users, gmute_user, ungmute_user
-from Barath.helpers.help_func import get_arg
-from Barath.helpers.utils import CheckAdmin
+from LovelyX.database.gmutedb import get_gmuted_users, gmute_user, ungmute_user
+from LovelyX.helpers.help_func import get_arg
+from LovelyX.helpers.utils import CheckAdmin
 
 
 @app.on_message(filters.command("gmute", HANDLER) & filters.me)
