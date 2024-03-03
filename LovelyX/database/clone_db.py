@@ -1,4 +1,4 @@
-from Barath import DATABASE
+from LovelyX import DATABASE
 
 db = DATABASE["CLONE"]
 
