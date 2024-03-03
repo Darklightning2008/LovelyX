@@ -1,6 +1,6 @@
 
 
-from Barath import db
+from LovelyX import db
 
 collection = db["gmute"]
 
